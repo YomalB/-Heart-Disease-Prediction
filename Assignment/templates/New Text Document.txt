@@ -1,0 +1,40 @@
+from flask import Flask, render_template, request
+import joblib
+import pandas as pd
+
+app = Flask(__name__)
+
+# Load the best model
+model = joblib.load('best_model.pkl')
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    prediction = None
+    if request.method == 'POST':
+        # Extract form data
+        data = {
+            'age': request.form['age'],
+            'sex': request.form['sex'],
+            'cp': request.form['cp'],
+            'trestbps': request.form['trestbps'],
+            'chol': request.form['chol'],
+            'fbs': request.form['fbs'],
+            'restecg': request.form['restecg'],
+            'thalach': request.form['thalach'],
+            'exang': request.form['exang'],
+            'oldpeak': request.form['oldpeak'],
+            'slope': request.form['slope'],
+            'ca': request.form['ca'],
+            'thal': request.form['thal']
+        }
+
+        # Convert data to DataFrame
+        input_df = pd.DataFrame([data])
+        
+        # Predict
+        prediction = model.predict(input_df)[0]
+
+    return render_template('index.html', prediction=prediction)
+
+if __name__ == '__main__':
+    app.run(debug=True)

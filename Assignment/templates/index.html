@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+</head>
+<body>
+    <div style="text-align:center;">
+        <h1>Heart Disease Prediction</h1>
+        <form action="/predict" method="post">
+            <label>Age:</label><br>
+            <input type="text" name="age"><br><br>
+            
+            <label>Sex (1 = male, 0 = female):</label><br>
+            <input type="text" name="sex"><br><br>
+            
+            <label>Chest Pain Type (1-4):</label><br>
+            <input type="text" name="cp"><br><br>
+            
+            <label>Resting Blood Pressure:</label><br>
+            <input type="text" name="trestbps"><br><br>
+            
+            <label>Serum Cholesterol:</label><br>
+            <input type="text" name="chol"><br><br>
+            
+            <label>Fasting Blood Sugar (1 = true, 0 = false):</label><br>
+            <input type="text" name="fbs"><br><br>
+            
+            <label>Resting Electrocardiographic Results (0-2):</label><br>
+            <input type="text" name="restecg"><br><br>
+            
+            <label>Maximum Heart Rate Achieved:</label><br>
+            <input type="text" name="thalach"><br><br>
+            
+            <label>Exercise Induced Angina (1 = yes, 0 = no):</label><br>
+            <input type="text" name="exang"><br><br>
+            
+            <label>ST Depression Induced by Exercise Relative to Rest:</label><br>
+            <input type="text" name="oldpeak"><br><br>
+            
+            <label>Slope of the Peak Exercise ST Segment:</label><br>
+            <input type="text" name="slope"><br><br>
+            
+            <label>Number of Major Vessels Colored by Flourosopy (0-3):</label><br>
+            <input type="text" name="ca"><br><br>
+            
+            <label>Thal (3 = normal, 6 = fixed defect, 7 = reversable defect):</label><br>
+            <input type="text" name="thal"><br><br>
+            
+            <button type="submit">Predict</button>
+        </form>
+        <br>
+        <h2>{{ prediction_text }}</h2>
+    </div>
+</body>
+</html>
